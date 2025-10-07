@@ -1,0 +1,72 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome - Car Price Prediction</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    .welcome-box {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      color: #2c3e50;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-weight: 600;
+      color: #27ae60;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .btn-custom {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #1e8449;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-box">
+    <h1>Welcome to the Car Price Prediction App</h1>
+    <p>Estimate your car’s selling price instantly based on its features.</p>
+    <a href="{{ url_for('predict_datapoint') }}" class="btn-custom">Start Prediction</a>
+  </div>
+</body>
+</html>

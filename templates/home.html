@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Car Price Prediction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #00b09b, #96c93d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 600px;
+      border: 2px solid #2ecc71;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #27ae60;
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    select,
+    input[type="number"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #a9dfbf;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      background-color: #fafafa;
+    }
+
+    select:focus,
+    input:focus {
+      outline: none;
+      border-color: #27ae60;
+      background-color: #fff;
+    }
+
+    .btn {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #1e8449;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Car Price Prediction</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="POST">
+
+      <div class="form-group">
+        <label for="brand">Car Brand</label>
+        <input type="text" name="brand" placeholder="e.g., Maruti, Hyundai, Ford" required>
+      </div>
+
+      <div class="form-group">
+        <label for="model">Car Model</label>
+        <input type="text" name="model" placeholder="e.g., Alto, i20, Ecosport" required>
+      </div>
+
+      <div class="form-group">
+        <label for="vehicle_age">Vehicle Age (years)</label>
+        <input type="number" name="vehicle_age" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="km_driven">Kilometers Driven</label>
+        <input type="number" name="km_driven" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="seller_type">Seller Type</label>
+        <select name="seller_type" required>
+          <option selected disabled value>Select Seller Type</option>
+          <option value="Dealer">Dealer</option>
+          <option value="Individual">Individual</option>
+          <option value="Trustmark Dealer">Trustmark Dealer</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="fuel_type">Fuel Type</label>
+        <select name="fuel_type" required>
+          <option selected disabled value>Select Fuel Type</option>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="CNG">CNG</option>
+          <option value="LPG">LPG</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="transmission_type">Transmission Type</label>
+        <select name="transmission_type" required>
+          <option selected disabled value>Select Transmission</option>
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mileage">Mileage (km/l)</label>
+        <input type="number" name="mileage" step="0.01" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="engine">Engine Capacity (cc)</label>
+        <input type="number" name="engine" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="max_power">Max Power (bhp)</label>
+        <input type="number" name="max_power" step="0.01" min="0" required>
+      </div>
+
+      <div class="form-group">
+        <label for="seats">Number of Seats</label>
+        <input type="number" name="seats" min="2" max="10" required>
+      </div>
+
+      <button type="submit" class="btn">Predict Price</button>
+    </form>
+  </div>
+</body>
+</html>
